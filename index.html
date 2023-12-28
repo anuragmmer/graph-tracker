@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph Manipulation</title>
+    <title>Chart.js Graph</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 id="graphTitle">Graph Manipulation</h1>        
-        <div id="graphTitle"></div>
-        <canvas id="myCanvas" width="600" height="400" style="background-color: white;"></canvas>
-        <br>
-        <button id="increaseBtn">Increase</button>
-        <button id="undoBtn">Undo</button>
-        <button id="addPointBtn">Stable</button>
-        <button id="decreaseBtn">Decrease</button>
-        <button id="exportPngBtn">Export PNG</button>
-        <button id="exportDataBtn">Export Data</button>
-        <input type="file" id="importDataInput" accept=".json" style="display:none;">
-        <button id="importDataBtn">Import Data</button>
+
+<div class="container">
+    <canvas id="myChart"></canvas>
+<div id="importedFileName"></div>
+
+    <div class="buttons">
+        <button onclick="increasePoint()">Increase</button>
+        <button onclick="decreasePoint()">Decrease</button>
+        <button onclick="addPointInLine()">Add Point</button>
+        <button onclick="undo()">Undo</button>
+        <button onclick="exportPng()">Export PNG</button>
+        <button onclick="exportData()">Export Data</button>
+        <input type="file" id="importDataInput" style="display: none;">
+        <button onclick="importData()">Import Data</button>
     </div>
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
