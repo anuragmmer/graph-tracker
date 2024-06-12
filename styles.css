@@ -1,33 +1,81 @@
 body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    position: relative;
 }
 
 .container {
+    width: 80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 canvas {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto; 
-    border: 1px solid #ddd;
-    display: block;
+    width: 100% !important;
+    height: auto !important;
 }
 
 .buttons {
+    margin-top: 20px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.data-manipulation {
+    display: flex;
     gap: 10px;
 }
 
-button {
-    flex: 1;
-    max-width: 150px;
-    padding: 10px;
-    font-size: 14px;
+.import-export {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.reset-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+
+}
+
+.btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.btn i.material-icons {
+    margin-right: 5px;
+}
+
+.btn:hover {
+    background: #0056b3;
 }
