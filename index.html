@@ -4,36 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graph Tracker</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.0.1"></script>
-    <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="importedFileName"></div>
-<div class="container">
-    <canvas id="myChart"></canvas>
-    <div class="buttons">
-        <div class="data-manipulation">
-            <button class="btn" onclick="increasePoint()"><i class="material-icons">add</i> Increase</button>
-            <button class="btn" onclick="decreasePoint()"><i class="material-icons">remove</i> Decrease</button>
-            <button class="btn" onclick="addPointInLine()"><i class="material-icons">timeline</i> Add Point</button>
-            <button class="btn" onclick="undo()"><i class="material-icons">undo</i> Undo</button>
+    <div class="graph-tracker">
+        <div class="header">
+            <h1>Graph Tracker</h1>
+            <button class="btn export-png" onclick="exportPng()"><i class="material-icons">save_alt</i> Save PNG</button>
+        </div>
+        <div class="graph-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="controls">
+            <div class="zoom-controls">
+                <button class="btn" onclick="resetZoom()" title="Reset Zoom"><i class="material-icons">zoom_out_map</i></button>
+                <button class="btn" onclick="zoomIn()" title="Zoom In"><i class="material-icons">zoom_in</i></button>
+                <button class="btn" onclick="zoomOut()" title="Zoom Out"><i class="material-icons">zoom_out</i></button>
+            </div>
+            <div class="data-controls">
+                <button class="btn" onclick="increasePoint()" title="Increase Point"><i class="material-icons">add</i></button>
+                <button class="btn" onclick="decreasePoint()" title="Decrease Point"><i class="material-icons">remove</i></button>
+                <button class="btn" onclick="addPointInLine()" title="Add Point in Line"><i class="material-icons">timeline</i></button>
+                <button class="btn" onclick="undo()" title="Undo"><i class="material-icons">undo</i></button>
+            </div>
         </div>
     </div>
+    <div class="rename-section">
+        <div class="rename-inputs">
+            <label for="x-axis">Rename:</label>
+            <input type="text" id="x-axis-value" placeholder="x-axis">
+            <label for="x-axis-value">:</label>
+            <input type="text" id="y-axis-value" placeholder="y-axis">
+        </div>
+    </div>
+    <div class="import-export">
+        <button class="btn" onclick="exportData()"><i class="material-icons">save_alt</i> Export Data</button>
+        <input type="file" id="importDataInput" style="display: none;">
+        <button class="btn" onclick="importData()"><i class="material-icons">file_upload</i> Import Data</button>
+    </div>
+    <div id="importedFileName"></div>
+    <div class="footer">
+        <p>Made for you by <a href="https://bio.site/anrg" target="_blank">anuragmmer</a></p>
+    </div>
 </div>
-<div class="import-export">
-    <button class="btn" onclick="exportPng()"><i class="material-icons">image</i> Export PNG</button>
-    <button class="btn" onclick="exportData()"><i class="material-icons">save_alt</i> Export Data</button>
-    <input type="file" id="importDataInput" style="display: none;">
-    <button class="btn" onclick="importData()"><i class="material-icons">file_upload</i> Import Data</button>
-</div>
-<div class="reset-container">
-    <button id="resetZoomBtn" class="btn" style="display:none;" onclick="resetZoom()"><i class="material-icons">zoom_out_map</i> Reset Zoom</button>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
