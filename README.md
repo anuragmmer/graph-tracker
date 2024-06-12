@@ -1,6 +1,7 @@
+
 # Graph Tracker
 
-Graph Tracker is a simple web application that allows users to track and visualize data points on a graph. Users can increment, decrement, undo, and add points in the same line, providing a dynamic and interactive experience.
+Graph Tracker is made for you to track and visualize data points on a plane graph. You can increase, decrease, undo, and add points in the same line: you can also rename the x and y axes to your preference. Use here: [Graph Tracker](https://anuragmmer.github.io/graph-tracker/)
 
 ## Features
 
@@ -11,5 +12,5 @@ Graph Tracker is a simple web application that allows users to track and visuali
 - **Export as PNG:** Export the graph as a high-quality PNG image.
 
 ## Screenshots
-![Screenshot 2024-01-04 134457](https://github.com/anuragmmer/graph-tracker/assets/63289577/cc7073b9-adde-4cdc-bb1c-9756f89f6122)
+![image](https://github.com/anuragmmer/graph-tracker/assets/63289577/ca8a3da1-fd99-4783-87b2-31c1213dd051)
 
