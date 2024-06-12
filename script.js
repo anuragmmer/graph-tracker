@@ -1,7 +1,6 @@
 let importedFileName = '';
 const ctx = document.getElementById('myChart').getContext('2d');
 let points = [0];
-
 let myChart;
 
 function drawGraph() {
@@ -9,12 +8,12 @@ function drawGraph() {
         labels: Array.from({ length: points.length }, (_, i) => i.toString()),
         datasets: [{
             label: 'Graph Data',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(0, 0, 0, 1)',
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
             data: points,
             fill: true,
             pointRadius: 5,
-            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+            pointBackgroundColor: 'rgba(0, 0, 0, 1)',
             tension: 0.4,
         }]
     };
@@ -23,12 +22,20 @@ function drawGraph() {
         responsive: true,
         scales: {
             x: {
+                title: {
+                    display: true,
+                    text: document.getElementById('x-axis-value').value || 'x-axis'
+                },
                 grid: {
                     display: true,
                     color: '#ddd',
                 },
             },
             y: {
+                title: {
+                    display: true,
+                    text: document.getElementById('y-axis-value').value || 'y-axis'
+                },
                 grid: {
                     display: true,
                     color: '#ddd',
@@ -39,7 +46,7 @@ function drawGraph() {
             legend: {
                 display: true,
                 labels: {
-                    color: '#333',
+                    color: '#000',
                 }
             },
             zoom: {
@@ -163,6 +170,24 @@ function resetZoom() {
     myChart.resetZoom();
     document.getElementById('resetZoomBtn').style.display = 'none';
 }
+
+function zoomIn() {
+    myChart.zoom(1.1);
+}
+
+function zoomOut() {
+    myChart.zoom(0.9);
+}
+
+
+document.getElementById('x-axis-value').addEventListener('input', () => {
+    drawGraph();
+});
+
+document.getElementById('y-axis-value').addEventListener('input', () => {
+    drawGraph();
+});
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     drawGraph();
