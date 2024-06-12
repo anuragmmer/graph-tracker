@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Graph Tracker</title>
+    <title>Graph Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.0.1"></script>
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <div id="importedFileName"></div>
 <div class="container">
     <canvas id="myChart"></canvas>
     <div class="buttons">
-        <button onclick="increasePoint()">Increase</button>
-        <button onclick="decreasePoint()">Decrease</button>
-        <button onclick="addPointInLine()">Add Point</button>
-        <button onclick="undo()">Undo</button>
-        <button onclick="exportPng()">Export PNG</button>
-        <button onclick="exportData()">Export Data</button>
-        <input type="file" id="importDataInput" style="display: none;">
-        <button onclick="importData()">Import Data</button>
+        <div class="data-manipulation">
+            <button class="btn" onclick="increasePoint()"><i class="material-icons">add</i> Increase</button>
+            <button class="btn" onclick="decreasePoint()"><i class="material-icons">remove</i> Decrease</button>
+            <button class="btn" onclick="addPointInLine()"><i class="material-icons">timeline</i> Add Point</button>
+            <button class="btn" onclick="undo()"><i class="material-icons">undo</i> Undo</button>
+        </div>
     </div>
+</div>
+<div class="import-export">
+    <button class="btn" onclick="exportPng()"><i class="material-icons">image</i> Export PNG</button>
+    <button class="btn" onclick="exportData()"><i class="material-icons">save_alt</i> Export Data</button>
+    <input type="file" id="importDataInput" style="display: none;">
+    <button class="btn" onclick="importData()"><i class="material-icons">file_upload</i> Import Data</button>
+</div>
+<div class="reset-container">
+    <button id="resetZoomBtn" class="btn" style="display:none;" onclick="resetZoom()"><i class="material-icons">zoom_out_map</i> Reset Zoom</button>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
