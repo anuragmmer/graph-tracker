@@ -9,17 +9,18 @@ function drawGraph() {
         labels: Array.from({ length: points.length }, (_, i) => i.toString()),
         datasets: [{
             label: 'Graph Data',
-            borderColor: 'grey',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
             data: points,
-            fill: false,
-            pointRadius: 2,
-            pointBackgroundColor: '#000',
-            tension: 0.2,
+            fill: true,
+            pointRadius: 5,
+            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+            tension: 0.4,
         }]
     };
 
     const options = {
+        responsive: true,
         scales: {
             x: {
                 grid: {
@@ -34,6 +35,41 @@ function drawGraph() {
                 },
             }
         },
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: '#333',
+                }
+            },
+            zoom: {
+                zoom: {
+                    wheel: {
+                        enabled: true
+                    },
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'xy',
+                    onZoom: function({chart}) {
+                        document.getElementById('resetZoomBtn').style.display = 'block';
+                    },
+                    onZoomComplete: function({chart}) {
+                        if (chart.getZoomLevel() === 1) {
+                            document.getElementById('resetZoomBtn').style.display = 'none';
+                        }
+                    }
+                },
+                pan: {
+                    enabled: true,
+                    mode: 'xy'
+                }
+            }
+        },
+        animation: {
+            duration: 1000,
+            easing: 'easeInOutQuad'
+        }
     };
 
     if (myChart) {
@@ -48,7 +84,6 @@ function drawGraph() {
         });
     }
 }
-
 
 function increasePoint() {
     points.push(points[points.length - 1] + 1);
@@ -79,30 +114,11 @@ function exportPng() {
         return;
     }
 
-    const tempCanvas = document.createElement('canvas');
-    const tempCtx = tempCanvas.getContext('2d');
-    const chartCanvas = document.getElementById('myChart');
-    const margin = 30;
-    const resolutionMultiplier = 10;
-    tempCanvas.width = (chartCanvas.width + 2 * margin) * resolutionMultiplier;
-    tempCanvas.height = (chartCanvas.height + 2 * margin) * resolutionMultiplier;
-    tempCtx.fillStyle = 'white';
-    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-    tempCtx.drawImage(
-        chartCanvas,
-        margin * resolutionMultiplier,
-        margin * resolutionMultiplier,
-        chartCanvas.width * resolutionMultiplier,
-        chartCanvas.height * resolutionMultiplier
-    );
-    tempCanvas.toBlob(function (blob) {
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = fileName;
-        link.click();
-    }, 'image/png', 1.0);
+    const link = document.createElement('a');
+    link.href = myChart.toBase64Image();
+    link.download = fileName;
+    link.click();
 }
-
 
 function exportData() {
     const fileName = prompt('Enter a filename for the JSON:', 'graph_data.json');
@@ -143,5 +159,11 @@ function importData() {
     input.click();
 }
 
+function resetZoom() {
+    myChart.resetZoom();
+    document.getElementById('resetZoomBtn').style.display = 'none';
+}
 
-drawGraph();
+document.addEventListener('DOMContentLoaded', (event) => {
+    drawGraph();
+});
