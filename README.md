@@ -1,7 +1,7 @@
 
 # Graph Tracker
 
-Graph Tracker is made for you to track and visualize data points on a plane graph. You can increase, decrease, undo, and add points in the same line: you can also rename the x and y axes to your preference. Use here: [Graph Tracker](https://anuragmmer.github.io/graph-tracker/)
+Graph Tracker is made for you to track and visualize data points on a plane graph. You can increase, decrease, undo, and add points in the same line; you can also rename the x and y axes to your preference. Use here: [Graph Tracker](https://anuragmmer.github.io/graph-tracker/)
 
 ## Features
 
